@@ -4,11 +4,13 @@ services:
   plex-server:
     image: plexinc/pms-docker
     volumes:
-    - ./data/database:/config
-    - ./data/transcode:/transcode
-    - ./data/media:/data
+      - ./data/database:/config
+      - ./data/transcode:/transcode
+      - ./data/media:/data
     environment:
       PLEX_CLAIM: ${PLEX_CLAIM}
       ADVERTISE_IP: ${ADVERTISE_IP}
+      TZ: ${TZ}
+    network_mode: host
     ports:
-    - 32400:32400
+      - 32400:32400
